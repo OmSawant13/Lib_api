@@ -31,5 +31,16 @@ app.use('/issue-books/',issueBookRouter);
 const PORT=process.env.PORT || 4000;
 
 app.listen(PORT,()=>{
-    console.log('Server is running on port 4000');
+    console.log(`Server is running on port ${PORT}`);
+});
+
+// Handle unhandled promise rejections
+process.on('unhandledRejection',(err)=>{
+    console.error('Unhandled Promise Rejection:', err);
+});
+
+// Handle uncaught exceptions
+process.on('uncaughtException',(err)=>{
+    console.error('Uncaught Exception:', err);
+    process.exit(1);
 });
